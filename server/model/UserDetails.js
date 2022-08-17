@@ -25,7 +25,49 @@ const UserDetailsSchema = new Schema({
         require: true
     },
     driving_license_number: {
-        type: Number,
-        require: true
+        type: String,
+        require: true,
+        unique: true
     },
+    vendor_account_details: {
+        account_number: {
+            type: Number,
+            require: true,
+            unique: true
+        },
+        account_holder_name: {
+            type: String,
+            require: true
+        },
+        ifsc_code: {
+            type: String,
+            require: true
+        },
+        account_holder_phone_number: {
+            type: Number,
+            require: true
+        },
+        upi_id: String,
+    },
+    // array of String with Id of Vendors
+    vendor_id: [{
+        type: String,
+        required: true,
+        unique: true
+    }],
+    total_amount_collected: {
+        type: Number,
+        require:true
+    },
+    //vehicle booked status from vehicle history
+    vehicle_status: {
+        type: String,
+        require:true
+    },
+    // vehicle id from vehicle history
+    pre_used_vehicle: [{
+        type: String,
+    }]
 })
+
+module.exports=mongoose.model('UserDetails',UserDetailsSchema);

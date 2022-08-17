@@ -19,5 +19,4 @@ const CustomerCareSchema = new Schema({
     }
 });
 
-
 module.exports = mongoose.model('CustomerCare', CustomerCareSchema);
