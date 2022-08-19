@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const VehicleHistory = new Schema({
     vehicle_id: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
         required: true
     },
     user_id: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
         required: true
     },
     pickup_location: {

@@ -38,7 +38,7 @@ const VehiclesSchema = new Schema({
             type: String,
             required: true
         },
-        user_id: String
+        user_id: mongoose.SchemaTypes.ObjectId
     },
     fuel_type: {
         type: String,
@@ -85,7 +85,7 @@ const VehiclesSchema = new Schema({
         required: true
     },
     pre_used_history: [{
-        type: String
+        type: mongoose.SchemaTypes.ObjectId
     }]
 })
 

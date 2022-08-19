@@ -51,7 +51,7 @@ const UserDetailsSchema = new Schema({
     },
     // array of String with Id of Vendors
     vendor_id: [{
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
         required: true,
         unique: true
     }],
@@ -61,12 +61,12 @@ const UserDetailsSchema = new Schema({
     },
     //vehicle booked status from vehicle history
     vehicle_status: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
         require:true
     },
     // vehicle id from vehicle history
     pre_used_vehicle: [{
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
     }]
 })
 

@@ -21,7 +21,7 @@ const BranchDetailsSchema = new Schema({
         required: true
     },
     vehicles_owned: [{
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
         required: true,
         unique: true
     }],
