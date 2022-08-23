@@ -60,11 +60,12 @@ const UserDetailsSchema = new Schema({
         require:true
     },
     //vehicle booked status from vehicle history
-    vehicle_status: {
+  /*  vehicle_status: {
         type: mongoose.SchemaTypes.ObjectId,
         require:true
-    },
-    // vehicle id from vehicle history
+    },*/
+    
+    // vehicle id from vehicle history & include current vechicle booked status
     pre_used_vehicle: [{
         type: mongoose.SchemaTypes.ObjectId,
     }]
