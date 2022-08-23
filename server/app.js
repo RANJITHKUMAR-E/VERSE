@@ -12,6 +12,13 @@ app.use(
     extended: true,
   })
 );
+/*
+app.get('/', (req,res)=> {
+  const {name} = req.body;
+  console.log("working");
+  res.status(200).json({status: "success", data: name})
+});
+*/
 
 require("./routes")(app);
 

@@ -25,7 +25,9 @@ mongoose
 
 const port = process.env.port;
 
-app.listen(port, () => {
-  console.log("Server started");
-  console.log(`App running on port ${port}`);
+app.listen(port, (err) => {
+  if(err) console.log("server not connected");
+  else
+  {console.log("Server started");
+  console.log(`App running on port ${port}`);}
 });
