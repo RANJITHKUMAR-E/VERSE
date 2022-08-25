@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema=mongoose.Schema;
+const {isEmail} = require('validator')
 
 const UserDetailsSchema = new Schema({
     name: {
@@ -8,17 +9,19 @@ const UserDetailsSchema = new Schema({
     },
     email_id: {
         type: String,
-        required: true,
-        unique: true
+        required: [true,"Email is required for creating an account"],
+        unique: [true, "Account related with this email already exists"],
+        validate : [isEmail,"Enter a valid Email Address"]
     },
     username: {
         type: String,
-        required: true,
-        unique: true
+        required: [true,"Username Required for account"],
+        unique: [true,"Username already exists"]
+        
     },
     date_of_birth: {
         type: Date,
-        required: true,
+        required: [true,],
     },
     phone_number: {
         type: Number,

@@ -1,31 +1,49 @@
-class signup{
+const { remove } = require("./../model/UserDetails");
+const UserDetails = require("./../model/UserDetails")
 
-    static test(req,res) {
-        //res.send("hai");
-        try{
-            var Username = req.body.Username;
-            var EmailId = req.body.EmailId;
-            var Password = req.body.Password;
-            var AccountType  = req.body.AccountType;
-            var ConfirmPassword = req.body.ConfirmPassword;
-            var Name = req.body.Name;
-            var DateOfBirth = req.body.DateOfBirth;
-            var DrivingLicenseNumber = req.body.DrivingLicenseNumber;
-            
-            var CompanyName = req.body.CompanyName;
-            var CompanyLicenseNumber = req.body.CompanyLicenseNumber;
-            var Location = req.body.Location;
-            var Address = req.body.Address;
-            var AccountNumber = req.body.AccountNumber;
-            var AccountHolderName = req.body.AccountHolderName;
-            var IfscCode = req.body.IfscCode;
-            var AcccountHolderPhoneNumber = req.body.AcccountHolderPhoneNumber;
-            var UpiId = req.body.UpiId;
-        }
-        catch{
-            
-        }
+var Username,EmailId,Password,AccountType,ConfirmPassword,Name,DateOfBirth,DrivingLicenseNumber,PhoneNumber;
+
+const createuser = async(req,res,next)=> {
+    //res.send("hai");
+    try{
+        const {Username,EmailId,Password,AccountType, ConfirmPassword,Name,DateOfBirth,DrivingLicenseNumber,PhoneNumber } = req.body;
+        
+        await UserDetails.create({
+            name: Name,
+            email_id:EmailId,
+            username:Username,
+            password:Password,
+            date_of_birth:DateOfBirth,
+            phone_number:PhoneNumber,
+            driving_license_number:DrivingLicenseNumber,
+            account_type:AccountType,   
+        })
+        res.status(201).json({
+            status : "success",
+            message : "Account created successfully"
+        })
+    }
+    catch(err){
+        res.status(400).json({
+            status : "failed",
+            message : err.message
+        })
+    }
+
+}
+
+const validatedetails = (req,res,next)=> {
+    
+    try{
+        
+        next();
+    }
+    catch(err)
+    {
+        if(err == "Ivalid Email")
+        console.error(err);
+        res.send(err)
     }
 }
 
-module.exports = signup;
+module.exports = {createuser,validatedetails};

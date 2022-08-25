@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
-const signup=require('../controller/signup')
+const {createuser,validatedetails}=require('../controller/signup')
 
-router.get("/", signup.test);
+router.get("/",validatedetails, createuser);
 
 module.exports = router;
