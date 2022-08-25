@@ -4,20 +4,21 @@ const Schema=mongoose.Schema;
 const AccountSchema = new Schema({
     username:{
         type: String,
-        required: true
+        required: [true,"Username Required for account"],
+        unique: [true,"Username already exists"]
     },
     email_id: {
         type: String,
-        required: true,
-        unique: true
+        required: [true,"Email is required for creating an account"],
+        unique: [true, "Account related with this email already exists"],
     },
     password: {
         type: String,
-        required: true,
+        required: [true,"Password is Required"]
     },
     account_type: {
         type: String,
-        required: true,
+        required: [true,"Account Type  is Required"]
     }
 });
 
