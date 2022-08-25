@@ -4,45 +4,47 @@ const Schema = mongoose.Schema;
 const VehiclesSchema = new Schema({
     vehicle_category: {
         type: String,
-        required: true
+        required: [true, "Vehicle's Catagery is required"]
     },
     vehicle_type: {
         type: String,
-        required: true
+        required: [true, "Vehicle's Type is required"]
     },
     brand_and_model: {
         vehicle_brands: {
             type: String,
-            required: true
+            required: [true, "Vehicle's Brand is required"]
         },
         vehicle_model: {
             type: String,
-            required: true
+            required: [true, "Vehicle's Model is required"]
         },
     },
     mileage: {
         type:Number,
-        required: true
+        required: [true, "Vehicle's Mileage is required"]
     },
     Color: {
         type:String,
-        required: true
+        required: [true, "Vehicle's Colour is needed"]
     },
     price: {
         type:Number,
-        required: true
+        required: [true, "Vehicle's Price is required"]
     },
+
     rating: Number,
+    
     availability_status: {
         status: {
             type: String,
-            required: true
+            required: [true, "Vehicle's Status is needed"]
         },
         user_id: mongoose.SchemaTypes.ObjectId
     },
     fuel_type: {
         type: String,
-        required: true
+        required: [true, "Fuel Type of the vehicle is required"]
     },
     offers: {
         offers_availability: String,
@@ -51,38 +53,38 @@ const VehiclesSchema = new Schema({
     },
     vehicle_image: [{
         type:String,
-        unique: true,
-        required: true
+        unique: [true, "Vehicle's Images are Repeted"],
+        required: [true, "Vehicle's Images are needed"]
     }],
     location: {
         type:String,
-        required: true
+        required: [true, "Vehicle's Location is required"]
     },
     vehicle_number: {
         type:String,
-        unique: true,
-        required: true
+        unique: [true, "Vehicle Number is already exist"],
+        required: [true, "Vehicle Number is required"]
     },
     kilometers_travelled: {
         type:Number,
-        required: true
+        required: [true, "Kilometers Travelled by the vehicle is required"]
     },
     year_of_purchase: {
         type:Date,
-        required: true
+        required: [true, "Vehicle's Purchase Year is required"]
     },
-    bike_insurance_details: {
+    bike_insurance_number: {
         type: String,
-        required: true,
-        unique: true
+        required: [true, "Vehicle's Insurance number is required"],
+        unique: [true, "This Insurance Number is linked to another vehicle"]
     },
     last_fc_date: {
         type:Date,
-        required: true
+        required: [true, "Vehicle's Last FC Date is required"]
     },
     vehicle_monthly_amount: {
         type: Number,
-        required: true
+        default: 0
     },
     pre_used_history: [{
         type: mongoose.SchemaTypes.ObjectId
