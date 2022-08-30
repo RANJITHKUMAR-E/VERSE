@@ -4,27 +4,40 @@ const Schema=mongoose.Schema;
 const BranchDetailsSchema = new Schema({
     company_license_number: {
         type: String,
-        unique: [true,"Company Already Registered"]
+        unique: [true,"Company Already Registered"],
+        match : [/^[a-zA-Z0-9]+$/, "Enter a valid Company License Number"]
     },
+
+    //company name should be alphanumeric
     company_name: {
         type: String,
-        //unique: [true,"Company Name should be Unique"]
-        required: [true,"Company Name is Required for Registering"]
+        required: [true,"Company Name is Required for Registering"],
+        match : [/^[a-zA-Z0-9 ]+$/, "Enter a valid Company Name"]
     },
+
     location: {
         type: String,
-        required: [true,"Comapny Location is Mandatory"]
+        required: [true,"Comapny Location is Mandatory"],
+        match : [/^[a-zA-Z ]+$/, "Enter a valid Company Name"]
     },
+
     address: {  //doubt
         type: String,
         unique: true,
-        required: [true,"Company Address is nescessary for communication purposes"]
+        required: [true,"Company Address is nescessary for communication purposes"],
     },
+
+    pin_code: {
+        type: Number,
+        required: [true,"Pin Code is Mandatory"],
+        match : [/^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$/, "Enter a valid Company Name"]
+    },
+
     vehicles_owned: [{
         type: mongoose.SchemaTypes.ObjectId,
         required: [true,"Atleast one vehicle needed to register as a company"],
-        //unique: [true,"Vechiles Owned should be there Own vechiles,vechile should not be in Loan Due"]
     }],
+
     monthly_amount: {
         type: Number,
         default: 0
