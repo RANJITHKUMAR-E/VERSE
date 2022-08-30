@@ -30,6 +30,7 @@ const BranchDetailsSchema = new Schema({
     pin_code: {
         type: Number,
         required: [true,"Pin Code is Mandatory"],
+        match : [/^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$/, "Enter a valid Company Name"]
     },
 
     vehicles_owned: [{

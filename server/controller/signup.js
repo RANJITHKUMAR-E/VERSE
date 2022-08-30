@@ -64,12 +64,13 @@ const createuser = async(req,res,next)=> {
 const vendorbranch = async (req,res)=> {
     try
     {
-        const {CompanyLicenseNumber,CompanyName,Location,Address,VehiclesOwned,MonthlyAmount} = req.body;
+        const {CompanyLicenseNumber,CompanyName,Location,Address,PinCode,VehiclesOwned,MonthlyAmount} = req.body;
         venbranch = await BranchDetails.create({
             company_license_number: CompanyLicenseNumber,
             company_name: CompanyName,
             location: Location,
             address: Address,
+            pin_code: PinCode,
             vehicles_owned: VehiclesOwned,
             monthly_amount: MonthlyAmount
         })
