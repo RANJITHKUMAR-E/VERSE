@@ -27,6 +27,7 @@ const UserDetailsSchema = new Schema({
     date_of_birth: {
         type: Date,
         required: [true, "Date of Birth is required for creating an account"],
+        match : [/\s+(?:0[1-9]|[12][0-9]|3[01])[-/.](?:0[1-9]|1[012])[-/.](?:19\d{2}|20[01][0-9]|2020)\b/, "Enter a valid Date of birth"],
         trim: true
     },
     phone_number: {
@@ -37,23 +38,29 @@ const UserDetailsSchema = new Schema({
     driving_license_number: {
         type: String,
         required: [true, "Driving License Number is required for creating an account"],
-        unique: [true, "Account related with this Driving License Number already exists"]
+        unique: [true, "Account related with this Driving License Number already exists"],
+        match : [/^(([A-Z]{2}[0-9]{2})( )|([A-Z]{2}-[0-9]{2}))((19|20)[0-9][0-9])[0-9]{7}$/, "Enter a valid driving_license number"]
     },
     vendor_account_details: {
         account_number: {
             type: Number,
-            unique: [true, "Account Number already used"]
+            unique: [true, "Account Number already used"],
         },
         account_holder_name: {
             type: String,
         },
         ifsc_code: {
             type: String,
+            match : [/^[A-Za-z]{4}[a-zA-Z0-9]{7}$/, "Enter a valid IFSC code"]
         },
         account_holder_phone_number: {
             type: Number,
+            min: [1000000000, "Enter a Valid Phone number"]
         },
-        upi_id: String,
+        upi_id:{
+            type: String,
+            match : [/^[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}$/, "Enter a valid UPI ID"]
+        } 
     },
     // array of String with Id of Vendors
     vendor_id: [{
