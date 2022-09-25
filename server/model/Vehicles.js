@@ -36,9 +36,9 @@ const VehiclesSchema = new Schema({
     rating: Number,
     
     availability_status: {
-        status: {
-            type: String,
-            required: [true, "Vehicle's Status is needed"]
+        availability: {
+            type: Boolean,
+            default : true
         },
         user_id: mongoose.SchemaTypes.ObjectId
     },
@@ -56,10 +56,6 @@ const VehiclesSchema = new Schema({
         unique: [true, "Vehicle's Images are Repeted"],
         required: [true, "Vehicle's Images are needed"]
     }],
-    location: {
-        type:String,
-        required: [true, "Vehicle's Location is required"]
-    },
     vehicle_number: {
         type:String,
         unique: [true, "Vehicle Number is already exist"],
@@ -70,7 +66,7 @@ const VehiclesSchema = new Schema({
         required: [true, "Kilometers Travelled by the vehicle is required"]
     },
     year_of_purchase: {
-        type:Date,
+        type:Number,
         required: [true, "Vehicle's Purchase Year is required"]
     },
     bike_insurance_number: {

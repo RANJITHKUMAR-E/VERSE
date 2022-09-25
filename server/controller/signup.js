@@ -50,7 +50,8 @@ const createuser = async(req,res,next)=> {
         {
             res.status(201).json({
                 status : "success",
-                message : "Account created successfully"
+                message : "Account created successfully",
+                UserId : acc._id
             })
         }
     }
@@ -93,7 +94,8 @@ const vendorbranch = async (req,res)=> {
 
         res.status(200).json({
             status: "success",
-            message: "Account Created successfully"
+            message: "Account Created successfully",
+            VendorId : venbranch._id
         })
         
     }
