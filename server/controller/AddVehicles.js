@@ -1,5 +1,7 @@
 const Vehicles = require("./../model/Vehicles");
-const BranchDetails = require("./../model/BranchDetails");;
+const BranchDetails = require("./../model/BranchDetails");
+const multer = require('multer');
+const { ProfilingLevel } = require("mongodb");
 
 const addvehicles = async (req,res,next) => {
 
@@ -10,6 +12,20 @@ const addvehicles = async (req,res,next) => {
         //Availability Status
     
         //Vehicles Images
+
+        /*
+        const VehImage = multer.diskStorage({
+            destination : "vehicle images",
+            filename : (req,file,cb) => {
+                cb(null, file.originalname);
+            },
+        });
+
+        const upload = multer({
+            storage : VehImage,
+        }).single('sampleImg')
+
+        */
 
         veh = await Vehicles.create({
             vehicle_category : VehicleCatagory,
@@ -22,6 +38,10 @@ const addvehicles = async (req,res,next) => {
             Color : Colour,
             price : Price,
             fuel_type : FuelType,
+            vehicle_image : {
+                data : req.file.filename,
+                contenType : image/png,
+            },
             vehicle_number : VehicleNumber,
             kilometers_travelled : KilometersTravelled,
             year_of_purchase : YearOfPurchase,

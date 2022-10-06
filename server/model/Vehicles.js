@@ -52,7 +52,8 @@ const VehiclesSchema = new Schema({
         offer_duration: Date,
     },
     vehicle_image: [{
-        type:String,
+        data : Buffer,
+        contentType:String,
         unique: [true, "Vehicle's Images are Repeted"],
         required: [true, "Vehicle's Images are needed"]
     }],
