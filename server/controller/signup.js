@@ -48,7 +48,7 @@ const createuser = async(req,res,next)=> {
 
         else
         {
-            res.status(201).json({
+            res.status(200).json({
                 status : "success",
                 message : "Account created successfully",
                 UserId : acc._id
